@@ -1,0 +1,51 @@
+﻿<Window x:Class="DeadLineNotes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Deadline Notes" MinHeight="100" MinWidth="100"  Height="250" Width="250" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Name="mainWindow" Icon="deadline.ico" KeyDown="mainWindow_KeyDown" Closing="mainWindow_Closing">
+    <DockPanel LastChildFill="True" >
+        <DockPanel.CommandBindings>
+            <CommandBinding Command="Undo" Executed="Undo_Executed" />
+        </DockPanel.CommandBindings>
+        <Border Name="border_header" Height="30" DockPanel.Dock="Top" VerticalAlignment="Top" CornerRadius="7,7,0,0" MouseLeftButtonDown="border_header_MouseLeftButtonDown" >
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource c_header}" />
+            </Border.Background>
+            <DockPanel>
+                <Image Name="img_add_note" Source="img\add.png" Margin="4" DockPanel.Dock="Left" HorizontalAlignment="Left" MouseLeftButtonDown="img_add_note_MouseLeftButtonDown" ToolTip="{DynamicResource s_addnew}" />
+                <Image Name="img_close" Source="img\close.png" Margin="4" DockPanel.Dock="Right" HorizontalAlignment="Right" MouseLeftButtonDown="img_close_MouseLeftButtonDown" ToolTip="{DynamicResource s_close}" />
+                <Image Name="img_info" Source="img\info.png" Margin="4" DockPanel.Dock="Right" HorizontalAlignment="Right" MouseLeftButtonDown="img_info_MouseLeftButtonDown" ToolTip="{DynamicResource s_info}" />
+                <Image Name="img_settings" Source="img\settings.png" Margin="4" DockPanel.Dock="Right" HorizontalAlignment="Right" MouseLeftButtonDown="img_settings_MouseLeftButtonDown" ToolTip="{DynamicResource s_settings}" />
+                <Image Name="img_orderby" Source="img\down.png" Margin="4" DockPanel.Dock="Right" HorizontalAlignment="Right" MouseLeftButtonDown="img_orderby_MouseLeftButtonDown" ToolTip="{DynamicResource s_orderby}" />
+                <Image Name="img_undo_del" Source="img\undo.png" Margin="4" DockPanel.Dock="Right" HorizontalAlignment="Right" MouseLeftButtonDown="img_undo_del_MouseLeftButtonDown" ToolTip="{DynamicResource s_restoreld}" />
+            </DockPanel>
+        </Border>
+        <Border Name="border_body" CornerRadius="0,0,7,7">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource c_body}" />
+            </Border.Background>
+            <ListBox Name="list_todos" Background="Transparent" BorderBrush="Transparent" Margin="1,3,1,0" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="3" Margin="1,1,3,1">
+                            <Border.Background>
+                                <SolidColorBrush Color="{Binding Path=PrioritySign, Mode=OneWay}" />
+                            </Border.Background>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Name="img_edit_todo" Grid.Column="0" Width="15" VerticalAlignment="Center" Source="img\edit.png" Margin="3" MouseLeftButtonUp="img_edit_todo_MouseLeftButtonUp" ToolTip="{DynamicResource s_editnote}" />
+                                    <Label VerticalAlignment="Center"  Grid.Column="1"  Content="{Binding Path=ShortNote, Mode=OneWay}" ToolTip="{Binding Path=Note, Mode=OneWay}" FontSize="14"  MouseLeftButtonUp="img_edit_todo_MouseLeftButtonUp" ></Label>
+                                <Label Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=ShortDeadline, Mode=OneWay}" ToolTip="{Binding Path=FullDeadline, Mode=OneWay}" FontSize="14" MouseLeftButtonUp="img_edit_todo_MouseLeftButtonUp"></Label>
+                                <Image Name="img_del_todo" Grid.Column="3" Width="15" VerticalAlignment="Center" Source="img\delete.png" Margin="3" MouseLeftButtonUp="img_del_todo_MouseLeftButtonUp" ToolTip="{DynamicResource s_removenote}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+    </DockPanel>
+</Window>

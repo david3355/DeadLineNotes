@@ -1,0 +1,25 @@
+﻿<Window x:Class="DeadLineNotes.NoteWarn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Height="45" Width="270" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ShowInTaskbar="False" Topmost="True" KeyDown="Window_KeyDown" Title="Warn">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Name="border_background" CornerRadius="5,0,0,5" MouseLeftButtonDown="border_background_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Name="label_note" MaxWidth="150" VerticalAlignment="Center" Grid.Column="0" FontWeight="Bold" FontSize="14" ></Label>
+                <Label Name="label_deadline" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold"  FontSize="15" ></Label>
+
+            </Grid>
+        </Border>
+        <Border Grid.Column="1" CornerRadius="0,5,5,0" Background="#DAFFFFFF">
+            <Image Name="img_close"  Width="25" VerticalAlignment="Center" Source="img\delete.png" Margin="3" MouseLeftButtonUp="img_close_MouseLeftButtonUp" ToolTip="{DynamicResource s_closewarn}" />
+        </Border>
+    </Grid>
+</Window>

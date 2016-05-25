@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="s_addnew">Új feljegyzés hozzáadása [Enter]</system:String>
+    <system:String x:Key="s_close">Deadline Notes bezárása [Escape]</system:String>
+    <system:String x:Key="s_settings">Beállítások</system:String>
+    <system:String x:Key="s_orderby">Rendezés határidő által</system:String>
+    <system:String x:Key="s_restoreld">Utolsó törölt feljegyzés visszaállítása [Ctrl + Z]</system:String>
+    <system:String x:Key="s_editnote">Feljegyzés szerkesztése</system:String>
+    <system:String x:Key="s_removenote">Feljegyzés törlése [Delete]</system:String>
+    <system:String x:Key="s_setdldate">Határidő beállítása</system:String>
+    <system:String x:Key="s_turnoffdl">Határidő kikapcsolása</system:String>
+    <system:String x:Key="s_hours">Órák</system:String>
+    <system:String x:Key="s_minutes">Percek</system:String>
+    <system:String x:Key="s_savenote">Mentés</system:String>
+    <system:String x:Key="s_return">Vissza</system:String>
+    <system:String x:Key="s_closewarn">Figyelmeztetés bezárása [Delete]</system:String>
+    <system:String x:Key="s_language">Nyelv:</system:String>
+    <system:String x:Key="s_topmost">Legfelső ablak</system:String>
+    <system:String x:Key="s_info">Információ</system:String>
+    <system:String x:Key="s_infotext">Bakos Dávid fejlesztése</system:String>
+    <system:String x:Key="s_set_general">Általános</system:String>
+    <system:String x:Key="s_set_colors">Színek</system:String>
+    <system:String x:Key="s_close_window">Ablak bezárása</system:String>
+    <system:String x:Key="s_alpha">Alfa</system:String>
+    <system:String x:Key="s_red">Vörös</system:String>
+    <system:String x:Key="s_green">Zöld</system:String>
+    <system:String x:Key="s_blue">Kék</system:String>
+    <system:String x:Key="s_dateforms">Dátumformátumok:</system:String>
+
+    <system:String x:Key="s_soundnf">Hangfájl [{0}] nem található!</system:String>
+    <system:String x:Key="s_cannotopenf">Nem sikerült megnyitni a fájl [{0}]. Hiba oka: {1}</system:String>
+    <system:String x:Key="s_error">Hiba</system:String>
+    <system:String x:Key="s_dyrwtexit">Biztosan be akarod zárni?</system:String>
+    <system:String x:Key="s_closedln">Deadline Notes bezárása</system:String>
+    <system:String x:Key="s_defaultnote">Írj feljegyzést</system:String>
+    <system:String x:Key="s_remtime">- Hátralévő idő: {0} nap {1} óra {2} perc</system:String>
+
+</ResourceDictionary>

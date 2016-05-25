@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="s_addnew">Add new note [Enter]</system:String>
+    <system:String x:Key="s_close">Close Deadline Notes [Escape]</system:String>
+    <system:String x:Key="s_settings">Settings</system:String>
+    <system:String x:Key="s_orderby">Order by deadline</system:String>
+    <system:String x:Key="s_restoreld">Restore last deleted note [Ctrl + Z]</system:String>
+    <system:String x:Key="s_editnote">Edit note</system:String>
+    <system:String x:Key="s_removenote">Remove note [Delete]</system:String>
+    <system:String x:Key="s_setdldate">Set deadline date</system:String>
+    <system:String x:Key="s_turnoffdl">Turn off deadline</system:String>
+    <system:String x:Key="s_hours">Hours</system:String>
+    <system:String x:Key="s_minutes">Minutes</system:String>
+    <system:String x:Key="s_savenote">Save note</system:String>
+    <system:String x:Key="s_return">Return</system:String>
+    <system:String x:Key="s_closewarn">Close Note warning [Delete]</system:String>
+    <system:String x:Key="s_language">Language:</system:String>
+    <system:String x:Key="s_topmost">Topmost on desktop</system:String>
+    <system:String x:Key="s_info">Information</system:String>
+    <system:String x:Key="s_infotext">Developed by David Bakos</system:String>
+    <system:String x:Key="s_set_general">General</system:String>
+    <system:String x:Key="s_set_colors">Colors</system:String>
+    <system:String x:Key="s_close_window">Close window</system:String>
+    <system:String x:Key="s_alpha">Alpha</system:String>
+    <system:String x:Key="s_red">Red</system:String>
+    <system:String x:Key="s_green">Green</system:String>
+    <system:String x:Key="s_blue">Blue</system:String>
+    <system:String x:Key="s_dateforms">Date forms:</system:String>
+
+    <system:String x:Key="s_soundnf">Sound file [{0}] not found!</system:String>
+    <system:String x:Key="s_cannotopenf">Cannot open file [{0}]. Reason: {1}</system:String>
+    <system:String x:Key="s_error">Error</system:String>
+    <system:String x:Key="s_dyrwtexit">Do you really want to exit?</system:String>
+    <system:String x:Key="s_closedln">Close Deadline Notes</system:String>
+    <system:String x:Key="s_defaultnote">Write a note</system:String>
+    <system:String x:Key="s_remtime">- Remaining time: {0} days {1} hours {2} minutes</system:String>
+
+</ResourceDictionary>

@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="c_header" A="0xFF" R="0x85" G="0xC4" B="0x85" />
+    <Color x:Key="c_body" A="0xFF" R="0xB4" G="0xF2" B="0xB4" />
+
+</ResourceDictionary>

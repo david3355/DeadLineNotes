@@ -1,0 +1,98 @@
+﻿<Window x:Class="DeadLineNotes.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       Title="Settings" Height="180" Width="300" WindowStyle="None" Background="Transparent"  AllowsTransparency="True" ShowInTaskbar="False" ResizeMode="NoResize" Topmost="True">
+    <DockPanel LastChildFill="True">
+        <Border Name="border_settingsheader" DockPanel.Dock="Top" Height="30" CornerRadius="7,7,0,0" MouseLeftButtonDown="border_settingsheader_MouseLeftButtonDown">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource c_header}" />
+            </Border.Background>
+            <DockPanel>
+                <Label FontWeight="Black" Content="{DynamicResource s_settings}" />
+                <Image Name="img_close" Source="img/close.png" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="4" MouseDown="img_close_MouseDown" ToolTip="{DynamicResource s_close_window}" />
+            </DockPanel>
+        </Border>
+        <Border  >
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource c_body}" />
+            </Border.Background>
+            <TabControl Background="Transparent" >
+                <TabControl.BorderBrush>
+                    <LinearGradientBrush >
+                        <GradientStop Color="{DynamicResource c_header}" />
+                    </LinearGradientBrush>
+                </TabControl.BorderBrush>
+                <TabItem  Header="{DynamicResource s_set_general}" >
+                    <TabItem.Background>
+                        <SolidColorBrush Color="{DynamicResource c_header}" />
+                    </TabItem.Background>
+                    <StackPanel Margin="1,4,1,1">
+                        <CheckBox Name="check_topmost" Checked="check_topmost_Change" Unchecked="check_topmost_Change" Content="{DynamicResource s_topmost}"></CheckBox>
+                        <Grid Margin="0,6,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{DynamicResource s_language}" Margin="0,0,10,0" />
+                            <ComboBox Name="combo_langs" Grid.Column="1" Height="22"  SelectionChanged="combo_langs_SelectionChanged" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid VerticalAlignment="Center"  >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Width="15" Margin="0,0,5,0" Grid.Column="0" Source="{Binding Path=ImageSource, Mode=OneWay}" VerticalAlignment="Center" />
+                                            <TextBlock Grid.Column="1"  Text="{Binding Path=Language, Mode=OneWay}" VerticalAlignment="Center"  />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Margin="0,2,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{DynamicResource s_dateforms}" Margin="0,0,10,0" />
+                            <ComboBox Name="combo_dateformats" Grid.Column="1" Height="22"  SelectionChanged="combo_dateformats_SelectionChanged" VerticalContentAlignment="Center"  >
+                            </ComboBox>
+                        </Grid>
+                        
+                    </StackPanel>
+                </TabItem>
+                <TabItem  Header="{DynamicResource s_set_colors}" >
+                    <TabItem.Background>
+                        <SolidColorBrush Color="{DynamicResource c_header}" />
+                    </TabItem.Background>
+                    <Grid Margin="0,5,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="74" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                        </Grid.RowDefinitions>
+                        <Label Content="A" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" ToolTip="{DynamicResource s_alpha}" />
+                        <Slider Name="slide_a" Minimum="0" Maximum="255" Interval="1" VerticalAlignment="Center" Margin="2" Grid.Column="1" Grid.Row="0" IsSnapToTickEnabled="True" />
+                        <Label Name="lbl_a" Content="{Binding ElementName=slide_a, Path=Value}" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" />
+                        <Label Content="R" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" ToolTip="{DynamicResource s_red}" />
+                        <Slider Name="slide_r" Minimum="0" Maximum="255" Interval="1" VerticalAlignment="Center" Margin="2" Grid.Column="1" Grid.Row="1" IsSnapToTickEnabled="True" />
+                        <Label Name="lbl_r" Content="{Binding ElementName=slide_r, Path=Value}" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" />
+                        <Label Content="G" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" ToolTip="{DynamicResource s_green}" />
+                        <Slider Name="slide_g" Minimum="0" Maximum="255" Interval="1" VerticalAlignment="Center" Margin="2" Grid.Column="1" Grid.Row="2" IsSnapToTickEnabled="True" />
+                        <Label Name="lbl_g" Content="{Binding ElementName=slide_g, Path=Value}" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" />
+                        <Label Content="B" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="0" Grid.Row="3" ToolTip="{DynamicResource s_blue}" />
+                        <Slider Name="slide_b" Minimum="0" Maximum="255" Interval="1" VerticalAlignment="Center" Margin="2" Grid.Column="1" Grid.Row="3" IsSnapToTickEnabled="True" />
+                        <Label Name="lbl_b" Content="{Binding ElementName=slide_b, Path=Value}" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="2" Grid.Row="3" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Border>
+    </DockPanel>
+</Window>
