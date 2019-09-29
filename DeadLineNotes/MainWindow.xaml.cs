@@ -96,7 +96,7 @@ namespace DeadLineNotes
                 foreach (NoteStruct note in list_todos.Items)
                 {
                     note.CheckPriority();
-                    if (note.TimeToWarn)
+                    if (note.TimeToWarn && note.DoNotify)
                     {
                         NoteWarn nw = new NoteWarn(note);
                         nw.Show();

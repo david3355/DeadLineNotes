@@ -34,6 +34,7 @@ namespace DeadLineNotes
         private const string atb_deadline = "deadline";
         private const string atb_lastmod = "lastmod";
         private const string atb_hasdl = "has_dl";
+        private const string atb_notify = "notify";
 
         #endregion
 
@@ -98,6 +99,7 @@ namespace DeadLineNotes
             NoteElement.SetAttribute(atb_deadline, String.Format("{0}-{1}-{2}-{3}-{4}", Note.DeadLine.Year, Note.DeadLine.Month, Note.DeadLine.Day, Note.DeadLine.Hour, Note.DeadLine.Minute));
             NoteElement.SetAttribute(atb_lastmod, String.Format("{0}-{1}-{2}-{3}-{4}-{5}", Note.LastModified.Year, Note.LastModified.Month, Note.LastModified.Day, Note.LastModified.Hour, Note.LastModified.Minute, Note.LastModified.Second));
             NoteElement.SetAttribute(atb_hasdl, Note.HasDeadline ? "1" : "0");
+            NoteElement.SetAttribute(atb_notify, Note.DoNotify.ToString());
         }
 
         public List<NoteStruct> ReadSavedNotes()
@@ -116,7 +118,9 @@ namespace DeadLineNotes
             string[] deadline = NoteElement.GetAttribute(atb_deadline).Split('-');
             string[] lastmod = NoteElement.GetAttribute(atb_lastmod).Split('-');
             string has_deadline = NoteElement.GetAttribute(atb_hasdl);
+            string notify = NoteElement.GetAttribute(atb_notify);
             NoteStruct note = new NoteStruct(NoteElement.GetAttribute(atb_note), new DateTime(int.Parse(deadline[0]), int.Parse(deadline[1]), int.Parse(deadline[2]), int.Parse(deadline[3]), int.Parse(deadline[4]), 0), int.Parse(NoteElement.GetAttribute(atb_noteid)), has_deadline == "1" ? true : false);
+            if (notify != String.Empty) note.SetDoNotify(bool.Parse(notify));
             note.SetLastModifiedDate(new DateTime(int.Parse(lastmod[0]), int.Parse(lastmod[1]), int.Parse(lastmod[2]), int.Parse(lastmod[3]), int.Parse(lastmod[4]), int.Parse(lastmod[5])));
             return note;
         }

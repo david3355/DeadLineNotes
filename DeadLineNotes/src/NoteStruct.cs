@@ -15,6 +15,7 @@ namespace DeadLineNotes
             deadline = Deadline;
             has_deadline = Has_Deadline;
             warn_turned_off = DateTime.Now;
+            doNotify = true;
             CheckPriority();
         }
 
@@ -34,6 +35,7 @@ namespace DeadLineNotes
         private Priority priority;
         private bool hasNoteWarm;
         private string default_note;
+        private bool doNotify;
 
         private const int WARN_PRIORITY = 5;
 
@@ -65,6 +67,11 @@ namespace DeadLineNotes
         public TimeSpan Countdown
         {
             get { return deadline - DateTime.Now; }
+        }
+
+        public bool DoNotify
+        {
+            get { return doNotify; }
         }
 
         /// <summary>
@@ -186,6 +193,11 @@ namespace DeadLineNotes
             if (priority == null) priority = new Priority(hours);
             else priority.Adjust(hours);
             return priority;
+        }
+
+        public void SetDoNotify(bool notify)
+        {
+            doNotify = notify;
         }
     }
 

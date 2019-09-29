@@ -43,6 +43,7 @@ namespace DeadLineNotes
             if (!Note.HasDeadline) DisableDatePanel();
             txt_note.Focus();
             txt_note.SelectAll();
+            check_do_notify.IsChecked = Note.DoNotify;
         }
 
 
@@ -69,6 +70,7 @@ namespace DeadLineNotes
             {
                 ownNote.SetNoDeadLine();
             }
+            ownNote.SetDoNotify(check_do_notify.IsChecked.Value);
             
             this.Close();
         }
