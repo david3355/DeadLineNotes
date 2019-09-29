@@ -5,7 +5,7 @@
     <system:String x:Key="s_addnew">Új feljegyzés hozzáadása [Enter]</system:String>
     <system:String x:Key="s_close">Deadline Notes bezárása [Escape]</system:String>
     <system:String x:Key="s_settings">Beállítások</system:String>
-    <system:String x:Key="s_orderby">Rendezés határidő által</system:String>
+    <system:String x:Key="s_orderby">Rendezés</system:String>
     <system:String x:Key="s_restoreld">Utolsó törölt feljegyzés visszaállítása [Ctrl + Z]</system:String>
     <system:String x:Key="s_editnote">Feljegyzés szerkesztése</system:String>
     <system:String x:Key="s_removenote">Feljegyzés törlése [Delete]</system:String>

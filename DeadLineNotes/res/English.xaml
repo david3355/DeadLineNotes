@@ -5,7 +5,7 @@
     <system:String x:Key="s_addnew">Add new note [Enter]</system:String>
     <system:String x:Key="s_close">Close Deadline Notes [Escape]</system:String>
     <system:String x:Key="s_settings">Settings</system:String>
-    <system:String x:Key="s_orderby">Order by deadline</system:String>
+    <system:String x:Key="s_orderby">Change order</system:String>
     <system:String x:Key="s_restoreld">Restore last deleted note [Ctrl + Z]</system:String>
     <system:String x:Key="s_editnote">Edit note</system:String>
     <system:String x:Key="s_removenote">Remove note [Delete]</system:String>

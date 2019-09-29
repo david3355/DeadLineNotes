@@ -73,6 +73,7 @@ namespace DeadLineNotes
             inspector.Interval = check_interval;
             inspector.Tick += Inspect;
             inspector.Start();
+            SwitchOrder();
         }
 
         private void SetWindowHeight()
@@ -224,7 +225,7 @@ namespace DeadLineNotes
             RestoreDeletedNote();
         }
 
-        private void img_orderby_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SwitchOrder()
         {
             if (lastOrder == ListSortDirection.Ascending)
             {
@@ -237,6 +238,11 @@ namespace DeadLineNotes
                 lastOrder = ListSortDirection.Ascending;
             }
             Sort(lastOrder);
+        }
+
+        private void img_orderby_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SwitchOrder();
         }
 
         private void img_info_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
