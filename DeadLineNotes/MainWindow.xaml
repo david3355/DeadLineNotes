@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DeadLineNotes.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Deadline Notes" MinHeight="100" MinWidth="100"  Height="250" Width="250" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Name="mainWindow" Icon="deadline.ico" KeyDown="mainWindow_KeyDown" Closing="mainWindow_Closing">
+        Title="Deadline Notes" MinHeight="30" MinWidth="100"  Height="250" Width="250" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Name="mainWindow" Icon="deadline.ico" KeyDown="mainWindow_KeyDown" Closing="mainWindow_Closing">
     <DockPanel LastChildFill="True" >
         <DockPanel.CommandBindings>
             <CommandBinding Command="Undo" Executed="Undo_Executed" />
@@ -23,10 +23,10 @@
             <Border.Background>
                 <SolidColorBrush Color="{DynamicResource c_body}" />
             </Border.Background>
-            <ListBox Name="list_todos" Background="Transparent" BorderBrush="Transparent" Margin="1,3,1,0" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" >
+            <ListBox Name="list_todos" Background="Transparent" BorderBrush="Transparent" Margin="1,1,1,0" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border CornerRadius="3" Margin="1,1,3,1">
+                        <Border CornerRadius="3" Margin="1,1,1,1">
                             <Border.Background>
                                 <SolidColorBrush Color="{Binding Path=PrioritySign, Mode=OneWay}" />
                             </Border.Background>

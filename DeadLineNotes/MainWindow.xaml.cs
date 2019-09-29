@@ -78,10 +78,14 @@ namespace DeadLineNotes
 
         private void SetWindowHeight()
         {
-            int notehgt = 29;
-            int space_bw_notes = 2;
-            int window_constant = 38;
-            this.Height = window_constant + list_todos.Items.Count * (notehgt + space_bw_notes);
+            int itemNum = list_todos.Items.Count;
+            if (itemNum > 10) itemNum = 10;
+            int notehgt = 31;
+            int space_bw_notes = 4;
+            int window_header = 30;
+            int listmargin = 2;
+            this.Height = window_header + listmargin + itemNum * (notehgt + space_bw_notes) + 6;
+
             //this.Width = list_todos.ActualWidth + list_todos.Margin.Left + list_todos.Margin.Right;
         }
 
