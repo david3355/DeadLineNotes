@@ -4,12 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.IO;
+using System.Windows.Media;
 
 namespace DeadLineNotes
 {
     class NoteBackup
     {
-        public NoteBackup()
+        private static NoteBackup instance;
+
+        public static NoteBackup GetInstance()
+        {
+            if (instance == null) instance = new NoteBackup();
+            return instance;
+        }
+
+        private NoteBackup()
         {
             doc = new XmlDocument();
             filePath = AppDomain.CurrentDomain.BaseDirectory + fileName;
@@ -27,6 +36,10 @@ namespace DeadLineNotes
 
         private const string tag_root = "Notes";
         private const string atb_lastid = "last_id";
+        private const string atb_a = "A";
+        private const string atb_r = "R";
+        private const string atb_g = "G";
+        private const string atb_b = "B";
 
         private const string tag_note = "Note";
         private const string atb_noteid = "id";
@@ -139,6 +152,30 @@ namespace DeadLineNotes
             }
             doc.Save(filePath);
             // if archiválás ... save to another file
+        }
+
+        public void SaveNoteColors(int A, int R, int G, int B)
+        {
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute(atb_a, A.ToString());
+            root.SetAttribute(atb_r, R.ToString());
+            root.SetAttribute(atb_g, G.ToString());
+            root.SetAttribute(atb_b, B.ToString());
+            doc.Save(filePath);
+        }
+
+        public Color GetSavedColor()
+        {
+            XmlElement root = doc.DocumentElement;
+            Color originalColor = (Color)App.Current.TryFindResource("c_body");
+
+            byte a, r, g, b;
+            if (byte.TryParse(root.GetAttribute(atb_a), out a)
+                && byte.TryParse(root.GetAttribute(atb_r), out r)
+                && byte.TryParse(root.GetAttribute(atb_g), out g)
+                && byte.TryParse(root.GetAttribute(atb_b), out b))
+                return Color.FromArgb(a, r, g, b);
+            else return Color.FromArgb(originalColor.A, originalColor.R, originalColor.G, originalColor.B);
         }
     }
 

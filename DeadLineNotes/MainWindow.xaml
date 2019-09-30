@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DeadLineNotes.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Deadline Notes" MinHeight="30" MinWidth="100"  Height="250" Width="250" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Name="mainWindow" Icon="deadline.ico" KeyDown="mainWindow_KeyDown" Closing="mainWindow_Closing">
+        Title="Deadline Notes" MinHeight="100" MinWidth="100"  Height="250" Width="250" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Name="mainWindow" Icon="deadline.ico" KeyDown="mainWindow_KeyDown" Closing="mainWindow_Closing">
     <DockPanel LastChildFill="True" >
         <DockPanel.CommandBindings>
             <CommandBinding Command="Undo" Executed="Undo_Executed" />

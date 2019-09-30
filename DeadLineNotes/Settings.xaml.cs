@@ -22,9 +22,11 @@ namespace DeadLineNotes
         {
             InitializeComponent();
             main = MainProgram;
+            backup = NoteBackup.GetInstance();
             Init();
         }
 
+        private NoteBackup backup;
         private MainWindow main;
         private Color bodyColor, headerColor;
 
@@ -39,13 +41,15 @@ namespace DeadLineNotes
         {
             LangInit();
             DateFormInit();
-            bodyColor = (Color)App.Current.TryFindResource("c_body");
+            //bodyColor = (Color)App.Current.TryFindResource("c_body");
+            bodyColor = backup.GetSavedColor();
             headerColor = (Color)App.Current.TryFindResource("c_header");
             
             slide_a.Value = 255;
             slide_r.Value = bodyColor.R;
             slide_g.Value = bodyColor.G;
             slide_b.Value = bodyColor.B;
+            SetColors();
             slide_a.ValueChanged += slide_ValueChanged;
             slide_r.ValueChanged += slide_ValueChanged;
             slide_g.ValueChanged += slide_ValueChanged;
@@ -92,7 +96,7 @@ namespace DeadLineNotes
             main.list_todos.Items.Refresh();
         }
 
-        private void slide_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SetColors()
         {
             bodyColor.A = (byte)slide_a.Value;
             bodyColor.R = (byte)slide_r.Value;
@@ -106,6 +110,11 @@ namespace DeadLineNotes
             App.Current.Resources["c_header"] = headerColor;
         }
 
+        private void slide_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            SetColors();
+        }
+
         private byte Darken(byte Color, int Value)
         {
             int v = Color - Value;
@@ -117,6 +126,16 @@ namespace DeadLineNotes
         {
             App.Current.Resources["s_dateform"] = DateFormat.GetDateForm(combo_dateformats.SelectedIndex);
             main.RefreshItemsView();
+        }
+
+        private void btn_save_color_Click(object sender, RoutedEventArgs e)
+        {
+            backup.SaveNoteColors((int)slide_a.Value, (int)slide_r.Value, (int)slide_g.Value, (int)slide_b.Value);
+        }
+
+        private void btn_load_orig_color_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

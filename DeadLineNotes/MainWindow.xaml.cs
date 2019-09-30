@@ -65,7 +65,7 @@ namespace DeadLineNotes
                 MessageBox.Show(String.Format(Res("s_cannotopenf"), u.LocalPath, e.Message), Res("s_error"));
                 player = null;
             }
-            backup = new NoteBackup();
+            backup = NoteBackup.GetInstance();
             List<NoteStruct> backups = backup.ReadSavedNotes();
             foreach (NoteStruct note in backups) list_todos.Items.Add(note);
             SetWindowHeight();
