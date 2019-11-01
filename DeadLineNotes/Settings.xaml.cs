@@ -54,6 +54,10 @@ namespace DeadLineNotes
             slide_r.ValueChanged += slide_ValueChanged;
             slide_g.ValueChanged += slide_ValueChanged;
             slide_b.ValueChanged += slide_ValueChanged;
+
+            check_notifications_enabled.IsChecked = backup.GetNotificationsEnabled();
+            check_notifications_enabled.Checked += check_notifications_enabled_Changed;
+            check_notifications_enabled.Unchecked += check_notifications_enabled_Changed;
         }
 
         private void LangInit()
@@ -136,6 +140,15 @@ namespace DeadLineNotes
         private void btn_load_orig_color_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void check_notifications_enabled_Changed(object sender, RoutedEventArgs e)
+        {
+            if (check_notifications_enabled.IsChecked != null)
+            {
+                MainWindow.notificationsEnabled = check_notifications_enabled.IsChecked.Value;
+                backup.SaveNotificationsEnabled(check_notifications_enabled.IsChecked.Value);
+            }
         }
     }
 }

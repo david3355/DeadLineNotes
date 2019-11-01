@@ -36,5 +36,6 @@
     <system:String x:Key="s_closedln">Deadline Notes bezárása</system:String>
     <system:String x:Key="s_defaultnote">Írj feljegyzést</system:String>
     <system:String x:Key="s_remtime">- Hátralévő idő: {0} nap {1} óra {2} perc</system:String>
+    <system:String x:Key="s_notif_enabled">Értesítések engedélyezve</system:String>
 
 </ResourceDictionary>

@@ -44,6 +44,7 @@ namespace DeadLineNotes
             txt_note.Focus();
             txt_note.SelectAll();
             check_do_notify.IsChecked = Note.DoNotify;
+            check_do_notify.IsEnabled = MainWindow.notificationsEnabled;
         }
 
 

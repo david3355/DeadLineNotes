@@ -36,6 +36,7 @@ namespace DeadLineNotes
         private Info info;
 
         private bool sorted;
+        public static bool notificationsEnabled;
         private BitmapImage img_order_desc, img_order_asc;
         private ListSortDirection lastOrder;
     
@@ -66,6 +67,7 @@ namespace DeadLineNotes
                 player = null;
             }
             backup = NoteBackup.GetInstance();
+            notificationsEnabled = backup.GetNotificationsEnabled();
             List<NoteStruct> backups = backup.ReadSavedNotes();
             foreach (NoteStruct note in backups) list_todos.Items.Add(note);
             SetWindowHeight();
@@ -101,7 +103,7 @@ namespace DeadLineNotes
                 foreach (NoteStruct note in list_todos.Items)
                 {
                     note.CheckPriority();
-                    if (note.TimeToWarn && note.DoNotify)
+                    if (note.TimeToWarn && note.DoNotify && notificationsEnabled)
                     {
                         NoteWarn nw = new NoteWarn(note);
                         nw.Show();

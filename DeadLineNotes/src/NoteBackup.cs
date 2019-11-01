@@ -40,6 +40,7 @@ namespace DeadLineNotes
         private const string atb_r = "R";
         private const string atb_g = "G";
         private const string atb_b = "B";
+        private const string atb_notifs_enabled = "notifications_enabled";
 
         private const string tag_note = "Note";
         private const string atb_noteid = "id";
@@ -176,6 +177,20 @@ namespace DeadLineNotes
                 && byte.TryParse(root.GetAttribute(atb_b), out b))
                 return Color.FromArgb(a, r, g, b);
             else return Color.FromArgb(originalColor.A, originalColor.R, originalColor.G, originalColor.B);
+        }
+
+        public void SaveNotificationsEnabled(bool NotificationsEnabled)
+        {
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute(atb_notifs_enabled, NotificationsEnabled.ToString());
+            doc.Save(filePath);
+        }
+
+        public bool GetNotificationsEnabled()
+        {
+            XmlElement root = doc.DocumentElement;
+            bool enabled;
+            return bool.TryParse(root.GetAttribute(atb_notifs_enabled), out enabled) ? enabled : true;
         }
     }
 

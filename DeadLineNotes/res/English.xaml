@@ -36,5 +36,6 @@
     <system:String x:Key="s_closedln">Close Deadline Notes</system:String>
     <system:String x:Key="s_defaultnote">Write a note</system:String>
     <system:String x:Key="s_remtime">- Remaining time: {0} days {1} hours {2} minutes</system:String>
+    <system:String x:Key="s_notif_enabled">Notifications enabled</system:String>
 
 </ResourceDictionary>
