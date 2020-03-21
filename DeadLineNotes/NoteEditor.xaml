@@ -30,6 +30,7 @@
                     </StackPanel>
                 </StackPanel>
                 <CheckBox Name="check_do_notify" Grid.Column="1" Grid.Row="1" Margin="5" IsChecked="True">Notify</CheckBox>
+                <CheckBox Name="check_pinned_to_top" Grid.Column="2" Grid.Row="1" Margin="5" IsChecked="False" >Pinned to top</CheckBox>
                 <Button Name="btn_save_note" Grid.Column="1" Grid.Row="2" Margin="2" Padding="5" Width="70" Height="30" Click="btn_save_note_Click" Content="{DynamicResource s_savenote}"></Button>
                 <Button Name="btn_close" Grid.Column="2" Grid.Row="2" Margin="2" Padding="5" Width="70" Height="30" Click="btn_close_Click" Content="{DynamicResource s_return}"></Button>
             </Grid>

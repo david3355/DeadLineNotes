@@ -45,6 +45,7 @@ namespace DeadLineNotes
             txt_note.SelectAll();
             check_do_notify.IsChecked = Note.DoNotify;
             check_do_notify.IsEnabled = MainWindow.notificationsEnabled;
+            check_pinned_to_top.IsChecked = Note.Pinned;
         }
 
 
@@ -72,7 +73,8 @@ namespace DeadLineNotes
                 ownNote.SetNoDeadLine();
             }
             ownNote.SetDoNotify(check_do_notify.IsChecked.Value);
-            
+            ownNote.SetPinned(check_pinned_to_top.IsChecked.Value);
+
             this.Close();
         }
 

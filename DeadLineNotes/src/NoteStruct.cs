@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Media;
+using System.Windows;
 
 namespace DeadLineNotes
 {
     public class NoteStruct
     {
-        public NoteStruct(string NoteText, DateTime Deadline, int ID, bool Has_Deadline)
+        public NoteStruct(string NoteText, DateTime Deadline, int ID, bool Has_Deadline, bool Pinned, bool Done)
         {
             id = ID;
             note = NoteText;
@@ -16,11 +17,13 @@ namespace DeadLineNotes
             has_deadline = Has_Deadline;
             warn_turned_off = DateTime.Now;
             doNotify = true;
+            pinned = Pinned;
+            done = Done;
             CheckPriority();
         }
 
         public NoteStruct()
-            : this(String.Empty, DateTime.Now, -1, true)
+            : this(String.Empty, DateTime.Now, -1, true, false, false)
         {
             default_note = MainWindow.Res("s_defaultnote");
             note = default_note;
@@ -36,6 +39,8 @@ namespace DeadLineNotes
         private bool hasNoteWarm;
         private string default_note;
         private bool doNotify;
+        private bool pinned;
+        private bool done;
 
         private const int WARN_PRIORITY = 5;
 
@@ -74,6 +79,16 @@ namespace DeadLineNotes
             get { return doNotify; }
         }
 
+        public bool Pinned
+        {
+            get { return pinned; }
+        }
+
+        public bool Done
+        {
+            get { return done; }
+        }
+
         /// <summary>
         /// Order notes by this property
         /// </summary>
@@ -81,7 +96,12 @@ namespace DeadLineNotes
         {
             get
             {
-                if (!has_deadline || Countdown.TotalSeconds <= 0) return int.MaxValue;
+                if (pinned) return 0;
+                if (!has_deadline || Countdown.TotalSeconds <= 0)
+                {
+                    if (!done) return 0;
+                    return int.MaxValue;
+                }
                 return Countdown.TotalSeconds;
             }
         }
@@ -125,6 +145,11 @@ namespace DeadLineNotes
                 if (!hasNoteWarm && Countdown.TotalSeconds > 0 && priority.Value >= WARN_PRIORITY && past.TotalMinutes > priority.WarnCycle) return true;
                 return false;
             }
+        }
+
+        public Visibility DoneCheckVisibility
+        {
+            get { return Countdown.TotalSeconds <= 0 && !done ? Visibility.Visible : Visibility.Collapsed; }
         }
 
         public Color PrioritySign
@@ -190,8 +215,8 @@ namespace DeadLineNotes
                 TimeSpan t = deadline - DateTime.Now;
                 hours = t.TotalHours;
             }
-            if (priority == null) priority = new Priority(hours);
-            else priority.Adjust(hours);
+            if (priority == null) priority = new Priority(hours, pinned, done);
+            else priority.Adjust(hours, pinned, done);
             return priority;
         }
 
@@ -199,13 +224,28 @@ namespace DeadLineNotes
         {
             doNotify = notify;
         }
+
+        public void SetPinned(bool Pinned)
+        {
+            pinned = Pinned;
+        }
+
+        public void SetDone(bool Done)
+        {
+            done = Done;
+        }
+
+        public void MakeDone()
+        {
+            done = true;
+        }
     }
 
     public class Priority
     {
-        public Priority(double Hours)
+        public Priority(double Hours, bool Pinned, bool Done)
         {
-            Adjust(Hours);
+            Adjust(Hours, Pinned, Done);
         }
 
         private int value;
@@ -224,10 +264,14 @@ namespace DeadLineNotes
             }
         }
 
-        public void Adjust(double Hours)
+        public void Adjust(double Hours, bool Pinned, bool Done)
         {
             hours = Hours;
-            if (Hours <= 0) value = 0; // Nincs határidő
+            if (Hours <= 0)
+            {
+                if (Pinned || !Done) value = 10;
+                else value = 0; // Nincs határidő
+            }
             else if (Hours < 1) value = 10;
             else if (Hours < 2) value = 9;
             else if (Hours < 5) value = 8;

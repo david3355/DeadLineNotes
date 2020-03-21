@@ -36,11 +36,13 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Image Name="img_edit_todo" Grid.Column="0" Width="15" VerticalAlignment="Center" Source="img\edit.png" Margin="3" MouseLeftButtonUp="img_edit_todo_MouseLeftButtonUp" ToolTip="{DynamicResource s_editnote}" />
                                     <Label VerticalAlignment="Center"  Grid.Column="1"  Content="{Binding Path=ShortNote, Mode=OneWay}" ToolTip="{Binding Path=Note, Mode=OneWay}" FontSize="14"  MouseLeftButtonUp="img_edit_todo_MouseLeftButtonUp" ></Label>
                                 <Label Grid.Column="2" VerticalAlignment="Center" Content="{Binding Path=ShortDeadline, Mode=OneWay}" ToolTip="{Binding Path=FullDeadline, Mode=OneWay}" FontSize="14" MouseLeftButtonUp="img_edit_todo_MouseLeftButtonUp"></Label>
                                 <Image Name="img_del_todo" Grid.Column="3" Width="15" VerticalAlignment="Center" Source="img\delete.png" Margin="3" MouseLeftButtonUp="img_del_todo_MouseLeftButtonUp" ToolTip="{DynamicResource s_removenote}" />
+                                <Image Name="img_done_todo" Visibility="{Binding Path=DoneCheckVisibility, Mode=OneWay}" Grid.Column="4" Width="15" VerticalAlignment="Center" Source="img\done.png" Margin="3" MouseLeftButtonUp="img_done_todo_MouseLeftButtonUp" ToolTip="{DynamicResource s_donenote}" />
                             </Grid>
                         </Border>
                     </DataTemplate>

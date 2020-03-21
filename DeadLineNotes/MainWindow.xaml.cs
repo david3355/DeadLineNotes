@@ -139,6 +139,20 @@ namespace DeadLineNotes
             SetWindowHeight();
         }
 
+        private void MakeNoteDone()
+        {
+            int idx = list_todos.SelectedIndex;
+            if (idx != -1)
+            {
+                NoteStruct note = list_todos.Items[idx] as NoteStruct;
+                note.MakeDone();
+                note.CheckPriority();
+                backup.SaveNote(note);
+                if (sorted) Sort(lastOrder);
+                else RefreshItemsView();
+            }
+        }
+
         private void RestoreDeletedNote()
         {
             if (backup.LastDeleted == null) return;
@@ -196,6 +210,11 @@ namespace DeadLineNotes
             RemoveNote();
         }
 
+        private void img_done_todo_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MakeNoteDone();
+        }
+        
         private void img_settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             settings.Show();

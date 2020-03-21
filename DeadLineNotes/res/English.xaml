@@ -9,6 +9,7 @@
     <system:String x:Key="s_restoreld">Restore last deleted note [Ctrl + Z]</system:String>
     <system:String x:Key="s_editnote">Edit note</system:String>
     <system:String x:Key="s_removenote">Remove note [Delete]</system:String>
+    <system:String x:Key="s_donenote">Task is done</system:String>
     <system:String x:Key="s_setdldate">Set deadline date</system:String>
     <system:String x:Key="s_turnoffdl">Turn off deadline</system:String>
     <system:String x:Key="s_hours">Hours</system:String>

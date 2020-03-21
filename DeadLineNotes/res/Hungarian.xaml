@@ -9,6 +9,7 @@
     <system:String x:Key="s_restoreld">Utolsó törölt feljegyzés visszaállítása [Ctrl + Z]</system:String>
     <system:String x:Key="s_editnote">Feljegyzés szerkesztése</system:String>
     <system:String x:Key="s_removenote">Feljegyzés törlése [Delete]</system:String>
+    <system:String x:Key="s_donenote">Feladat kész</system:String>
     <system:String x:Key="s_setdldate">Határidő beállítása</system:String>
     <system:String x:Key="s_turnoffdl">Határidő kikapcsolása</system:String>
     <system:String x:Key="s_hours">Órák</system:String>
